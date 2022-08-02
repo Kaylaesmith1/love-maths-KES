@@ -37,6 +37,10 @@ function runGame(gameType) {
 
     if (gameType === "addition") {
         displayAdditionQuestion (num1, num2);
+
+    } else if (gameType === "multiply") {
+        displayMultiplyQuestion (num1, num2);
+
     } else {
         alert(`Unknown game type: ${gameType}`);
         // the 'throw' will send this message to the console >> open it and you can see the error //
@@ -73,6 +77,10 @@ function calculateCorrectAnswer() {
 
     if (operator === "+") {
         return [operand1 + operand2, "addition"];
+
+    } else if (operator === "x") {
+        return [operand1 * operand2, "multiply"];
+    
     } else {
         alert(`Unimplemented operator: ${operator}`);
         throw `ERROR! This operator, ${operator} is unknown. Aborting!`;
@@ -109,7 +117,11 @@ function displaySubtractQuestion() {
 
 }
 
-function displayMultiplyQuestion() {
+function displayMultiplyQuestion(operand1, operand2) {
+    document.getElementById('operand1').textContent = operand1;
+    document.getElementById('operand2').textContent = operand2;
+    // use 'x' rather than '*' bc it's just a symbol, not a code instruction. //
+    document.getElementById("operator").textContent = "x";
 
 }
 
