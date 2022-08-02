@@ -18,8 +18,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
             }
 
-        });
+        })
     }
+    // Hit enter to submit answer rather than clicking submit button. //
+    document.getElementById('answer-box').addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+            checkAnswer();
+        }
+        })
 
     runGame("addition");
     
@@ -31,6 +37,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
 //using docstrings will show the sentence of what your code does if your function is located somewhere else in the code too //
 function runGame(gameType) {
+    // Answer box resets to blank after page refreshes //
+    document.getElementById('answer-box').value = "";
+
+    // Focus the cursor in the answer box by default after the page is refreshed so you don't have to click each time. //
+    document.getElementById('answer-box').focus();
+
 // These two variables generate random numbers betwen 1 and 25 //
     let num1 = Math.floor(Math.random()*25) + 1;
     let num2 = Math.floor(Math.random()*25) + 1;
