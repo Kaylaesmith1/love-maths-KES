@@ -54,8 +54,10 @@ function runGame(gameType) {
 
     if (isCorrect) {
         alert("Good job! You got it right!");
+        incrementScore();
     } else {
         alert(`Oh no, you got it wrong. The correct answer is ${calculatedAnswer[0]}`);
+        incrementWrongAnswer();
     }
 
     runGame(calculatedAnswer[1]);
@@ -77,11 +79,19 @@ function calculateCorrectAnswer() {
     }
 }
 
+/** Get current score from DOM and increment it by one if the user's answer is correct. */
 function incrementScore() {
+    let oldScore = parseInt(document.getElementById("score").innerText);
+    // Could use: innerText or textContent (interchangeable mostly). Could use oldScore + 1 or ++oldScore //
+    // Put the ++ BEFORE oldScore so the DOM is updated with the new number, otherwise the innerText will never be overwritten. //
+    document.getElementById("score").innerText = ++oldScore;
 
 }
 
+/** Get current score of incorect answers from DOM and increment it by one if the user's answer is incorrect. */
 function incrementWrongAnswer() {
+    let oldScore = parseInt(document.getElementById("incorrect").innerText);
+    document.getElementById("incorrect").innerText = ++oldScore;
 
 }
 
